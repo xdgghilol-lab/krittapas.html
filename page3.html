@@ -6,125 +6,205 @@
 <title>ตารางกิจวัตรประจำวัน</title>
 
 <style>
-body{
-    background-color: MediumSeaGreen;
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-h2{
-    background-color: Tomato;
-    color: white;
-    padding: 10px;
-}
-
-.table-responsive{
-    overflow-x: auto;
-}
-
-table{
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-    border-collapse: collapse;
-    background-color: white;
-}
-
-table, th, td{
-    border: 1px solid black;
-}
-
-th, td{
-    padding: 10px;
-    text-align: center;
-}
-
-button{
-    padding: 10px 20px;
-    font-size: 18px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-@media (max-width:768px){
-    h2{
-        font-size:22px;
+    :root {
+        --bg-color: #f0fdf4;
+        --card-bg: #ffffff;
+        --primary-color: #2e7d32;
+        --header-bg: #4caf50;
+        --text-color: #333333;
+        --border-color: #e0e0e0;
+        --border-radius: 12px;
     }
 
-    table{
-        font-size:14px;
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Verdana', sans-serif;
+        margin: 0;
+        padding: 30px 20px;
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    button{
-        width:90%;
-        font-size:20px;
+    .container {
+        width: 100%;
+        max-width: 750px;
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
-}
+
+    h2 {
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background-color: var(--header-bg);
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+        color: #555555;
+    }
+
+    /* ทำไฮไลท์สลับสีแถวเพื่อให้มองง่ายขึ้น */
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f8e9;
+        transition: background-color 0.2s ease;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    button {
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3);
+    }
+
+    button:hover {
+        background-color: #e64a19;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 15px 10px;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h2 {
+            font-size: 20px;
+            padding: 12px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 10px 8px;
+        }
+
+        button {
+            width: 100%;
+            font-size: 18px;
+        }
+    }
 </style>
 </head>
 
 <body>
 
-<h2>ตารางกิจวัตรประจำวัน</h2>
+<div class="container">
+    <h2>ตารางกิจวัตรประจำวัน</h2>
 
-<div class="table-responsive">
-<table>
-<tr>
-    <th>วัน</th>
-    <th>เวลา</th>
-    <th>กิจกรรม</th>
-</tr>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>วัน</th>
+                    <th>เวลา</th>
+                    <th>กิจกรรม</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monday</strong></td>
+                    <td>17:30 - 18:00</td>
+                    <td>ออกกำลังกาย</td>
+                </tr>
+                <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>08:00 - 17:00</td>
+                    <td>เรียน</td>
+                </tr>
+                <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>17:30 - 18:00</td>
+                    <td>ออกกำลังกาย</td>
+                </tr>
+                <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>08:00 - 17:00</td>
+                    <td>เรียน</td>
+                </tr>
+                <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>17:30 - 18:00</td>
+                    <td>ออกกำลังกาย</td>
+                </tr>
+                <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>08:00 - 08:20</td>
+                    <td>ทำความสะอาดบ้าน</td>
+                </tr>
+                <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>08:00 - 08:20</td>
+                    <td>ทำความสะอาดบ้าน</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<tr>
-    <td>Monday</td>
-    <td>17:30 - 18:00</td>
-    <td>ออกกำลังกาย</td>
-</tr>
-
-<tr>
-    <td>Tuesday</td>
-    <td>08:00 - 17:00</td>
-    <td>เรียน</td>
-</tr>
-
-<tr>
-    <td>Wednesday</td>
-    <td>17:30 - 18:00</td>
-    <td>ออกกำลังกาย</td>
-</tr>
-
-<tr>
-    <td>Thursday</td>
-    <td>08:00 - 17:00</td>
-    <td>เรียน</td>
-</tr>
-
-<tr>
-    <td>Friday</td>
-    <td>17:30 - 18:00</td>
-    <td>ออกกำลังกาย</td>
-</tr>
-
-<tr>
-    <td>Saturday</td>
-    <td>08:00 - 08:20</td>
-    <td>ทำความสะอาดบ้าน</td>
-</tr>
-
-<tr>
-    <td>Sunday</td>
-    <td>08:00 - 08:20</td>
-    <td>ทำความสะอาดบ้าน</td>
-</tr>
-
-</table>
+    <div class="button-group">
+        <button onclick="document.location='page2.html'">กลับไปหน้า 2</button>
+    </div>
 </div>
-
-<br>
-
-<button onclick="document.location='page2.html'">กลับไปหน้า 2</button>
 
 </body>
 </html>
