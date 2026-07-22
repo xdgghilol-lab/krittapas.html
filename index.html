@@ -15,7 +15,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* พื้นหลังไล่สีทันสมัย */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Sarabun', sans-serif;
             text-align: center;
             padding: 40px 20px;
@@ -30,17 +30,36 @@
             background-color: #ffffff;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
 
-        /* 3. Profile Header Section (CSS Grid Layout) */
+        /* 3. Profile Header Section (Flexbox Layout เพื่อความยืดหยุ่นและรองรับมือถือได้ดีขึ้น) */
         .profile-header {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr; /* แบ่ง 3 คอลัมน์ ซ้าย-รูป-ขวา */
+            display: flex;
             align-items: center;
+            justify-content: space-between;
             margin-bottom: 40px;
             gap: 20px;
+            text-align: left;
+        }
+
+        .profile-meta {
+            flex: 1;
+        }
+
+        .name-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
         }
 
         .profile-img {
@@ -49,29 +68,9 @@
             object-fit: cover;
             border-radius: 50%;
             border: 5px solid #ffffff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            grid-column: 2; /* วางรูปตรงกลาง */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
-
-        .name-title {
-            grid-column: 1 / -4; /* จัดชื่อให้ชิดซ้าย */
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #555;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            line-height: 1.2;
-            margin-top: 5px;
-        }
-        
-        .profile-meta{
-          grid-column: 3; /* จัดmetaให้ชิดขวา */
-        }
-
 
         /* 4. Info Cards Section (Flexbox Layout) */
         .info-section {
@@ -88,18 +87,18 @@
             display: flex;
             align-items: flex-start;
             text-align: left;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
-        .info-card .icon{
-           font-size: 1.5rem;
-           color: #764ba2;
-           margin-right: 20px;
-           padding-top: 5px;
+        .info-card .icon {
+            font-size: 1.5rem;
+            color: #764ba2;
+            margin-right: 20px;
+            padding-top: 5px;
         }
         
-        .info-card .content{
-          flex: 1;
+        .info-card .content {
+            flex: 1;
         }
 
         .info-title {
@@ -140,15 +139,15 @@
             height: auto;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         /* Audio */
-        audio{
-           width: 100%;
-           max-width: 600px;
-           outline: none;
-           margin-bottom: 20px;
+        audio {
+            width: 100%;
+            max-width: 600px;
+            outline: none;
+            margin-bottom: 20px;
         }
 
         /* 6. Contact Section */
@@ -205,25 +204,16 @@
             }
 
             .profile-header {
-                grid-template-columns: 1fr; /* เรียงแนวตั้งบนมือถือ */
-            }
-
-            .name-title, .profile-meta {
-               grid-column: 1;
-               margin-bottom: 10px;
-            }
-            
-            .profile-img {
-                grid-column: 1;
-                margin-bottom: 15px;
+                flex-direction: column-reverse; /* สลับให้รูปอยู่ด้านบน แล้วชื่ออยู่ด้านล่างบนมือถือ */
+                text-align: center;
             }
 
             .name {
                 font-size: 2rem;
             }
             
-            .info-card{
-              padding: 20px;
+            .info-card {
+                padding: 20px;
             }
 
             .btn {
@@ -232,22 +222,20 @@
         }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-        <!-- Profile Header (Grid Layout) -->
+        <!-- Profile Header -->
         <div class="profile-header">
             <div class="profile-meta">
-              <p class="name-title">ผู้จัดทำ</p>
-              <h1 class="name">นาย กฤตาส <br> ก้องไตรภพ</h1>
+                <p class="name-title">ผู้จัดทำ</p>
+                <h1 class="name">นาย กฤตาส <br> ก้องไตรภพ</h1>
             </div>
-            <img src="20240321_232135.jpg" alt="">
         </div>
 
         <hr class="hr">
 
-        <!-- Info Section (Flexbox Layout) -->
+        <!-- Info Section -->
         <div class="info-section">
             <div class="info-card">
                 <div class="icon">🎂</div>
@@ -288,7 +276,6 @@
         <div class="media-container">
             <h2 class="section-title">Media & Projects</h2>
             
-            <!-- รูปภาพจาก URL เดิม -->
             <img src="https://ihcupload.s3.ap-southeast-1.amazonaws.com/article/175567859468a5878227c8d.png" alt="เกม" class="content-img">
 
             <p style="margin-bottom: 30px;">
@@ -296,17 +283,14 @@
                 <q>Build a future where people live in harmony with nature.</q>
             </p>
 
-            <!-- วิดีโอ -->
             <video controls>
                 <source src="lv_0_20260624092634.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             
-            <!-- เว้นระยะ -->
             <div style="height: 20px;"></div>
 
             <p style="margin-bottom: 15px;">เพลงดีแนะนำให้ฟัง</p>
-            <!-- เสียง -->
             <audio controls>
                 <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.ogg" type="audio/ogg">
                 <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.mp3" type="audio/mpeg">
