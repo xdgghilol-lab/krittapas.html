@@ -6,63 +6,173 @@
     <title>ทักษะและอาชีพที่อยากเป็น</title>
 
     <style>
+        :root {
+            --bg-color: #f7f9fa;
+            --card-bg: #ffffff;
+            --primary-color: #2c3e50;
+            --accent-color: #f1c40f;
+            --text-color: #333333;
+            --border-radius: 12px;
+        }
+
         body {
-            background-color: yellow;
-            font-family: Verdana, sans-serif;
+            background-color: var(--bg-color);
+            font-family: 'Verdana', sans-serif;
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
         }
 
         h2 {
-            background-color: gray;
+            background: linear-gradient(135deg, #34495e, #2c3e50);
             color: white;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
         }
 
         ul, ol {
-            text-align: left;
-            display: inline-block;
-            padding-left: 25px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         li {
-            margin-top: 20px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* เพิ่มตัวเลขลำดับสวยๆ ให้กับ ordered list */
+        ol {
+            counter-reset: item-counter;
+        }
+
+        ol li {
+            counter-increment: item-counter;
+            position: relative;
+        }
+
+        ol li::before {
+            content: counter(item-counter);
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: #fff;
             font-weight: bold;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .item-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
 
         img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 10px auto 20px;
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #e0e0e0;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
             cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px 10px;
             }
 
             h2 {
-                font-size: 22px;
+                font-size: 20px;
+                padding: 12px;
             }
 
-            li {
-                font-size: 18px;
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
             }
 
             button {
-                width: 90%;
-                font-size: 20px;
+                width: 100%;
+                font-size: 18px;
             }
         }
     </style>
@@ -70,50 +180,66 @@
 
 <body>
 
-<h2>ทักษะที่ต้องการพัฒนา</h2>
+<div class="container">
+    <h2>ทักษะที่ต้องการพัฒนา</h2>
 
-<ul>
-    <li>ภาษาอังกฤษ</li>
-    <img src="https://xn--12cl9ca5a0ai1ad0bea0clb11a0e.com/wp-content/uploads/2018/04/abc.jpg" alt="ภาษาอังกฤษ">
+    <ul>
+        <li>
+            <span class="item-title">ภาษาอังกฤษ</span>
+            <img src="https://xn--12cl9ca5a0ai1ad0bea0clb11a0e.com/wp-content/uploads/2018/04/abc.jpg" alt="ภาษาอังกฤษ">
+        </li>
+        <li>
+            <span class="item-title">การต่อวงจร</span>
+            <img src="https://www.kruaof.com/wp-content/uploads/2024/10/image-12-png.webp" alt="การต่อวงจร">
+        </li>
+        <li>
+            <span class="item-title">การเขียนโค้ด</span>
+            <img src="https://f.ptcdn.info/795/071/000/qkm167r20P0ibjTHXwX-o.jpg" alt="การเขียนโค้ด">
+        </li>
+        <li>
+            <span class="item-title">ความอดทน</span>
+            <img src="https://images.dmc.tv/www/images/articles/dhamma.com/620430.1.jpg" alt="ความอดทน">
+        </li>
+        <li>
+            <span class="item-title">การเข้าสังคม</span>
+            <img src="https://images.ctfassets.net/szez98lehkfm/3Eu2WXsUEeOW2Y1Q9ycIvI/603b1dd87460900137a5f68abea918e8/MyIC_Article_9818?fm=webp" alt="การเข้าสังคม">
+        </li>
+    </ul>
 
-    <li>การต่อวงจร</li>
-    <img src="https://www.kruaof.com/wp-content/uploads/2024/10/image-12-png.webp" alt="การต่อวงจร">
+    <hr>
 
-    <li>การเขียนโค้ด</li>
-    <img src="https://f.ptcdn.info/795/071/000/qkm167r20P0ibjTHXwX-o.jpg" alt="การเขียนโค้ด">
+    <h2>อาชีพที่อยากเป็น</h2>
 
-    <li>ความอดทน</li>
-    <img src="https://images.dmc.tv/www/images/articles/dhamma.com/620430.1.jpg" alt="ความอดทน">
+    <ol>
+        <li>
+            <span class="item-title">CIA</span>
+            <img src="https://m.media-amazon.com/images/M/MV5BNzZjNjRmODktMDZjOC00MzcwLWI4N2ItYTI5OWY1YTI2ZGZlXkEyXkFqcGc@._V1_.jpg" alt="CIA">
+        </li>
+        <li>
+            <span class="item-title">FBI</span>
+            <img src="https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/3C39/production/_86971451_gettyimages-453698640.jpg" alt="FBI">
+        </li>
+        <li>
+            <span class="item-title">Spy</span>
+            <img src="https://i.pinimg.com/474x/36/f3/89/36f38906aa7073156b19e445a74d03f2.jpg" alt="Spy">
+        </li>
+        <li>
+            <span class="item-title">นักสืบ</span>
+            <img src="https://inwfile.com/s-r/k6qqpr.png" alt="นักสืบ">
+        </li>
+        <li>
+            <span class="item-title">Milk</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Milk_glass.jpg" alt="Milk">
+        </li>
+    </ol>
 
-    <li>การเข้าสังคม</li>
-    <img src="https://images.ctfassets.net/szez98lehkfm/3Eu2WXsUEeOW2Y1Q9ycIvI/603b1dd87460900137a5f68abea918e8/MyIC_Article_9818?fm=webp" alt="การเข้าสังคม">
-</ul>
+    <hr>
 
-<hr>
-
-<h2>อาชีพที่อยากเป็น</h2>
-
-<ol>
-    <li>CIA</li>
-    <img src="https://m.media-amazon.com/images/M/MV5BNzZjNjRmODktMDZjOC00MzcwLWI4N2ItYTI5OWY1YTI2ZGZlXkEyXkFqcGc@._V1_.jpg" alt="CIA">
-
-    <li>FBI</li>
-    <img src="https://ichef.bbci.co.uk/ace/standard/624/cpsprodpb/3C39/production/_86971451_gettyimages-453698640.jpg" alt="FBI">
-
-    <li>Spy</li>
-    <img src="https://i.pinimg.com/474x/36/f3/89/36f38906aa7073156b19e445a74d03f2.jpg" alt="Spy">
-
-    <li>นักสืบ</li>
-    <img src="https://inwfile.com/s-r/k6qqpr.png" alt="นักสืบ">
-
-    <li>Milk</li>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Milk_glass.jpg" alt="Milk">
-</ol>
-
-<hr>
-
-<button onclick="document.location='index.html'">กลับไปหน้า 1</button>
-<button onclick="document.location='page3.html'">ไปที่หน้า 3</button>
+    <div class="button-group">
+        <button onclick="document.location='index.html'">กลับไปหน้า 1</button>
+        <button onclick="document.location='page3.html'">ไปที่หน้า 3</button>
+    </div>
+</div>
 
 </body>
 </html>
