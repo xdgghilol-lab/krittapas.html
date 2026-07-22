@@ -3,68 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>งานแนะนำตัวเอง</title>
+    <title>งานแนะนำตัวเอง (Professional Version)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-color: MediumSeaGreen;
-            font-family: Verdana, sans-serif;
-            text-align: center;
+        /* 1. CSS Reset & Global Styles */
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
-        .header-box {
-            background-color: Gray;
-            color: white;
-            padding: 10px;
-            margin: 15px auto;
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* พื้นหลังไล่สีทันสมัย */
+            font-family: 'Sarabun', sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            color: #333;
+            min-height: 100vh;
         }
 
-        img,
-        video,
-        audio {
-            max-width: 100%;
+        /* 2. Main Layout Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* 3. Profile Header Section (CSS Grid Layout) */
+        .profile-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; /* แบ่ง 3 คอลัมน์ ซ้าย-รูป-ขวา */
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            grid-column: 2; /* วางรูปตรงกลาง */
+        }
+
+        .name-title {
+            grid-column: 1 / -4; /* จัดชื่อให้ชิดซ้าย */
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
+            margin-top: 5px;
+        }
+        
+        .profile-meta{
+          grid-column: 3; /* จัดmetaให้ชิดขวา */
+        }
+
+
+        /* 4. Info Cards Section (Flexbox Layout) */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .info-card .icon{
+           font-size: 1.5rem;
+           color: #764ba2;
+           margin-right: 20px;
+           padding-top: 5px;
+        }
+        
+        .info-card .content{
+          flex: 1;
+        }
+
+        .info-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .info-detail {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* Separator */
+        .hr {
+            border: 0;
+            height: 1px;
+            background-color: #eee;
+            margin: 30px 0;
+        }
+
+        /* 5. Media Section */
+        .media-container {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        img.content-img, video {
+            width: 100%;
+            max-width: 600px;
             height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Audio */
+        audio{
+           width: 100%;
+           max-width: 600px;
+           outline: none;
+           margin-bottom: 20px;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            margin-top: 20px;
-            cursor: pointer;
+        /* 6. Contact Section */
+        .contact-address {
+            font-style: normal;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 20px;
         }
 
-        a {
-            color: blue;
+        a.contact-link {
+            color: #764ba2;
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        a:hover {
+        a.contact-link:hover {
+            color: #555;
             text-decoration: underline;
         }
 
+        /* 7. Buttons */
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 30px;
+            cursor: pointer;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+        }
+
+        /* 8. Responsive (Mobile) */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 20px;
             }
 
-            h1 {
-                font-size: 28px;
+            .container {
+                padding: 25px;
             }
 
-            h2 {
-                font-size: 22px;
+            .profile-header {
+                grid-template-columns: 1fr; /* เรียงแนวตั้งบนมือถือ */
             }
 
-            p,
-            address {
-                font-size: 18px;
+            .name-title, .profile-meta {
+               grid-column: 1;
+               margin-bottom: 10px;
+            }
+            
+            .profile-img {
+                grid-column: 1;
+                margin-bottom: 15px;
             }
 
-            button {
-                width: 90%;
-                font-size: 20px;
+            .name {
+                font-size: 2rem;
+            }
+            
+            .info-card{
+              padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
             }
         }
     </style>
@@ -72,72 +235,101 @@
 
 <body>
 
-    <div class="header-box">
-        <h1>งานแนะนำตัวเอง</h1>
+    <div class="container">
+        <!-- Profile Header (Grid Layout) -->
+        <div class="profile-header">
+            <div class="profile-meta">
+              <p class="name-title">ผู้จัดทำ</p>
+              <h1 class="name">นาย กฤตาส <br> ก้องไตรภพ</h1>
+            </div>
+            <img src="20260412_225126.jpg" alt="รูปแนะนำตัว" class="profile-img">
+        </div>
+
+        <hr class="hr">
+
+        <!-- Info Section (Flexbox Layout) -->
+        <div class="info-section">
+            <div class="info-card">
+                <div class="icon">🎂</div>
+                <div class="content">
+                    <p class="info-title">วันเดือนปีเกิด</p>
+                    <p class="info-detail">19 กุมภาพันธ์ 2553</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">⏱️</div>
+                <div class="content">
+                    <p class="info-title">อายุ</p>
+                    <p class="info-detail">16 ปี</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">🏫</div>
+                <div class="content">
+                    <p class="info-title">สถานที่ศึกษาปัจจุบัน</p>
+                    <p class="info-detail">วิทยาลัยเทคนิคเชียงใหม่</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">❤️</div>
+                <div class="content">
+                    <p class="info-title">สิ่งที่ชอบ</p>
+                    <p class="info-detail">การเล่นเกมกับเพื่อน</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Media & Content Section -->
+        <div class="media-container">
+            <h2 class="section-title">Media & Projects</h2>
+            
+            <!-- รูปภาพจาก URL เดิม -->
+            <img src="https://ihcupload.s3.ap-southeast-1.amazonaws.com/article/175567859468a5878227c8d.png" alt="เกม" class="content-img">
+
+            <p style="margin-bottom: 30px;">
+                WWF's goal is to:
+                <q>Build a future where people live in harmony with nature.</q>
+            </p>
+
+            <!-- วิดีโอ -->
+            <video controls>
+                <source src="lv_0_20260624092634.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- เว้นระยะ -->
+            <div style="height: 20px;"></div>
+
+            <p style="margin-bottom: 15px;">เพลงดีแนะนำให้ฟัง</p>
+            <!-- เสียง -->
+            <audio controls>
+                <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.ogg" type="audio/ogg">
+                <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Contact Section -->
+        <div class="media-container" style="margin-top: 40px;">
+            <h2 class="section-title">การติดต่อ</h2>
+            <address class="contact-address">
+                <strong>เขียนโดย:</strong> สมาย<br>
+                <strong>เบอร์โทร:</strong> 081 641 6785<br>
+                <strong>Social:</strong> <a href="https://www.facebook.com/m.w.wad.taw.cring/" target="_blank" class="contact-link">Facebook ของฉัน</a>
+            </address>
+        </div>
+
+        <button class="btn" onclick="document.location='page2.html'">
+            ไปที่หน้าถัดไป (Page 2)
+        </button>
     </div>
-
-    <p>ชื่อตัวเอง <br>นาย กฤตาส ก้องไตรภพ</p>
-    <hr>
-
-    <img src="20260412_225126.jpg" alt="รูปแนะนำตัว">
-
-    <h2 class="header-box">วันเดือนปีเกิด</h2>
-    <p>19/02/2553</p>
-
-    <img src="https://yt3.googleusercontent.com/7gBxOc3e7IMlLZs78FvwSSJ9Y6HnYZanZi_yWzYHl2LaTfPAbW6wCagGJuctZ5tU9pHiqO2Y=s900-c-k-c0x00ffffff-no-rj" alt="รูปประกอบ">
-    <hr>
-
-    <h2 class="header-box">อายุ</h2>
-    <p>16</p>
-    <hr>
-
-    <h2 class="header-box">สถานที่ศึกษาปัจจุบัน</h2>
-    <p>เทคนิคเชียงใหม่</p>
-    <hr>
-
-    <h2 class="header-box">สิ่งที่ชอบ</h2>
-    <p>การเล่นเกมกับเพื่อน</p>
-
-    <img src="https://ihcupload.s3.ap-southeast-1.amazonaws.com/article/175567859468a5878227c8d.png" alt="เกม">
-
-    <p>
-        WWF's goal is to:
-        <q>Build a future where people live in harmony with nature.</q>
-    </p>
-
-    <h2 class="header-box">การติดต่อ</h2>
-
-    <address>
-        เขียนโดย สมาย.<br>
-        เบอร์โทร 081 641 6785<br>
-        <a href="https://www.facebook.com/m.w.wad.taw.cring/" target="_blank">
-            Facebook ของฉัน
-        </a>
-    </address>
-
-    <br>
-
-    <video controls>
-        <source src="lv_0_20260624092634.mp4" type="video/mp4">
-        <source src="lv_0_20260624092634.ogg" type="video/ogg">
-        Your browser does not support the video tag.
-    </video>
-
-    <br>
-
-    <p>เพลงดีแนะนำให้ฟัง</p>
-
-    <audio controls>
-        <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.ogg" type="audio/ogg">
-        <source src="67 ITALIAN BRAINROT x Live Stream Official Music Video - Roblox Rotted Brain.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <br><br>
-
-    <button onclick="document.location='page2.html'">
-        ไปที่หน้า 2
-    </button>
 
 </body>
 </html>
