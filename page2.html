@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<p>จำนวนผู้เข้าชมเว็บไซต์นี้: <span id="visit-count">กำลังโหลด...</span> ครั้ง</p>
+
+<script>
+  // ตัวอย่างเรียกใช้งาน API เพื่อเพิ่มแต้มและดึงค่าล่าสุด (เปลี่ยน namespace และ key เป็นของคุณเอง)
+  fetch('https://api.counterapi.dev/v1/my_website_portfolio/visits/up')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('visit-count').innerText = data.count;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById('visit-count').innerText = '-';
+    });
+</script><!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -240,6 +253,35 @@
         <button onclick="document.location='page3.html'">ไปที่หน้า 3</button>
     </div>
 </div>
+
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function success(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+function error() {
+  alert("Sorry, no position available.");
+}
+</script>
+
 
 </body>
 </html>
