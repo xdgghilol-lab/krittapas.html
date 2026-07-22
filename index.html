@@ -309,7 +309,20 @@
                 <strong>Social:</strong> <a href="https://www.facebook.com/m.w.wad.taw.cring/" target="_blank" class="contact-link">Facebook ของฉัน</a>
             </address>
         </div>
+        <p>จำนวนผู้เข้าชมเว็บไซต์นี้: <span id="visit-count">กำลังโหลด...</span> ครั้ง</p>
 
+<script>
+  // ตัวอย่างเรียกใช้งาน API เพื่อเพิ่มแต้มและดึงค่าล่าสุด (เปลี่ยน namespace และ key เป็นของคุณเอง)
+  fetch('https://api.counterapi.dev/v1/my_website_portfolio/visits/up')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('visit-count').innerText = data.count;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById('visit-count').innerText = '-';
+    });
+</script>
         <button class="btn" onclick="document.location='page2.html'">
             ไปที่หน้าถัดไป (Page 2)
         </button>
